@@ -1,0 +1,70 @@
+
+.upload-wrap {
+    height: 100px;
+    width: 200px;
+    border: 4px;
+    border: 1px solid green;
+    position: relative;
+}
+.upload-wrap input[type="file"] {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+.upload-wrap input[type="file"] {
+    cursor: pointer;
+}
+.btn {
+    background-color: green;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    width: 100px;
+    text-align: center;
+    margin: 20px 0 20px 0;
+}
+.upload-wrap .btn {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+    margin: 0;
+}
+.btn:hover {
+    cursor: pointer;
+}
+.progress {
+    position: relative;
+    width: 400px;
+    height: 25px;
+    border-radius: 100px;
+    background-color: #ccc;
+    overflow: hidden;
+}
+.loaded {
+    background-color: green;
+    overflow: hidden;
+    height: 100%;
+    width: 0%;
+    transition: all 1s;
+}
+.progress .font,
+.loaded .font {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: green;
+}
+.loaded .font {
+    color: #fff;
+}
+.drop-wrap {
+    height: 400px;
+    width: 400px;
+    border: 1px solid #ccc;
+    line-height: 400px;
+    text-align: center;
+    background-color: transparent;
+}

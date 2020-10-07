@@ -1,0 +1,19 @@
+
+.btn {
+    height: 30px;
+    width: 80px;
+    display: inline-block;
+    margin-left: 20px;
+    background-color: green;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+textarea {
+    height: 300px;
+    width: 600px;
+    vertical-align: middle;
+}

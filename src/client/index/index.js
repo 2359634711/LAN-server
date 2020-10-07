@@ -1,33 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- <div class="upload-wrap">
-        <input id="file-dom" class="file-wrap" type="file" name="upload" multiple="multipart" />
-        <div class="btn">点击上传文件</div>
-    </div> -->
-    <div class="drop-wrap" id="drop-wrap-dom">
-        + 拖拽上传文件
-    </div>
-    <br>
-    <div class="progress">
-        <div class="font"></div>
-        <div
-            class="loaded"
-            id="loaded-dom"
-        >
-            <div class="font"></div>
-        </div>
-    </div>
-    <div id="files-wrap"></div>
-</body>
+/**
+ * @file index.js
+ * @author 2359634711
+ * @description 入口文件
+ */
 
-
-<script>
+import './index.css';
 
 const timer = ((flag = false) => cb => {
     if (flag) {
@@ -102,7 +79,7 @@ function upload(file) {
         timer(() => {
             alert('上传完毕');
             location.reload();
-        })
+        });
     }, ev => {
         const progress = ev.loaded / ev.total * 100;
         setProgress(progress);
@@ -113,28 +90,28 @@ setProgress(0);
 
 function dropInit() {
     const dropWrap = document.getElementById('drop-wrap-dom');
-    dropWrap.addEventListener("dragenter", function(e){  
-        dropWrap.style.borderColor = '#ccc';  
-        dropWrap.style.backgroundColor = 'gray';  
-    });  
-    dropWrap.addEventListener("dragleave", function(e){  
-        dropWrap.style.backgroundColor = 'transparent';  
+    dropWrap.addEventListener('dragenter', e => {
+        dropWrap.style.borderColor = '#ccc';
+        dropWrap.style.backgroundColor = 'gray';
     });
-    dropWrap.addEventListener("dragover", function(e){  
-        e.stopPropagation();  
-        e.preventDefault();  
-    });  
+    dropWrap.addEventListener('dragleave', e => {
+        dropWrap.style.backgroundColor = 'transparent';
+    });
+    dropWrap.addEventListener('dragover', e => {
+        e.stopPropagation();
+        e.preventDefault();
+    });
 
     dropWrap.addEventListener('drop', e => {
         dropWrap.style.backgroundColor = 'transparent';  
         e.stopPropagation();
         e.preventDefault();
         const files = [];
-        [].forEach.call(e.dataTransfer.files, function(file) {
+        [].forEach.call(e.dataTransfer.files, file => {
             files.push(file);
-        },false);
-        upload(files[0])
-    })
+        }, false);
+        upload(files[0]);
+    });
 }
 dropInit();
 function setProgress(progress) {
@@ -143,83 +120,5 @@ function setProgress(progress) {
     const progressFontDom = document.querySelectorAll('.font');
     progressFontDom.forEach((v, i) => {
         v.innerText = `${progress}%`;
-    })
+    });
 }
-
-
-
-
-</script>
-
-<style>
-    .upload-wrap {
-        height: 100px;
-        width: 200px;
-        border: 4px;
-        border: 1px solid green;
-        position: relative;
-    }
-    .upload-wrap input[type=file] {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        opacity: 0;
-    }
-    .upload-wrap input[type=file] {
-        cursor: pointer;
-    }
-    .btn {
-        background-color: green;
-        color: #fff;
-        height: 40px;
-        line-height: 40px;
-        width: 100px;
-        text-align: center;
-        margin: 20px 0 20px 0;
-    }
-    .upload-wrap .btn {
-        height: 100%;
-        width: 100%;
-        text-align: center;
-        line-height: 100px;
-        margin: 0;
-    }
-    .btn:hover {
-        cursor: pointer;
-    }
-    .progress {
-        position: relative;
-        width: 400px;
-        height: 25px;
-        border-radius: 100px;
-        background-color: #ccc;
-        overflow: hidden;
-    }
-    .loaded {
-        background-color: green;
-        overflow: hidden;
-        height: 100%;
-        width: 0%;
-        transition: all 1s;
-    }
-    .progress .font,
-    .loaded .font {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: green;
-    }
-    .loaded .font {
-        color: #fff;
-    }
-    .drop-wrap {
-        height: 400px;
-        width: 400px;
-        border: 1px solid #ccc;
-        line-height: 400px;
-        text-align: center;
-        background-color: transparent;
-    }
-</style>
-</html>
